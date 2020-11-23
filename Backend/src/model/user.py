@@ -7,8 +7,8 @@ class User():
         self.username = username
         self.email = email
 
-    #@classmethod
-    #def create(cls,
-    #          username,
-     #          email,
-      #         password):
+    # @classmethod
+    # def create(cls,
+    #            username,
+    #            email,
+    #            password):
