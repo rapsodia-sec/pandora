@@ -9,20 +9,6 @@ app = Flask(__name__)
 Base.metadata.create_all(engine)
 
 
-
-# if len(users) == 0:
-#     # create and persist mock user
-#     new_user = User("rapsodia", "Mattia", "Dall'Antonia", "mattiadallantonia@rapsodia-sec.com", "$2y$12$5R3108L7GQQpM7M3EfdCvuzD0f4IympCXnH.2ksg70R8fQ/ulMZYO")
-#     session.add(new_user)
-#     session.commit()
-#     session.close()
-#
-#     # reload users
-#     users = session.query(User).all()
-
-
-
-
 @app.route('/')
 def home():
     return "divide et impera"
