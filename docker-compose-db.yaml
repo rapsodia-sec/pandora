@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: pandora_db
+    environment:
+      POSTGRES_USER: pandora
+      POSTGRES_PASSWORD: pandora
+      POSTGRES_DB: pandora
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - ./postgres-data:/var/lib/postgresql
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pandora@rapsodia-sec.com
+      PGADMIN_DEFAULT_PASSWORD: pandora
+    ports:
+      - 5050:80
+    restart: always
+    volumes:
+    - ./pgadmin/servers.json:/pgadmin4/servers.json

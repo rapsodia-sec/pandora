@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   api:
-    container_name: pandora_api
+    container_name: pandora_backend
     build: ./Backend/src
     depends_on:
       - db
@@ -12,15 +12,15 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - ./app:/usr/src/app/app
+      - ./flask:/usr/src/app/app
     restart: always
 
   db:
     container_name: pandora_db
     environment:
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: test
-      POSTGRES_DB: test
+      POSTGRES_USER: pandora
+      POSTGRES_PASSWORD: pandora
+      POSTGRES_DB: pandora
     image: postgres:latest
     ports:
       - 5432:5432
@@ -32,8 +32,8 @@ services:
     container_name: pgadmin
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: test@test.org
-      PGADMIN_DEFAULT_PASSWORD: test
+      PGADMIN_DEFAULT_EMAIL: pandora@rapsodia-sec.com
+      PGADMIN_DEFAULT_PASSWORD: pandora
     ports:
       - 5050:80
     restart: always
