@@ -3,7 +3,7 @@ version: '3.7'
 services:
   api:
     container_name: pandora_backend
-    build: ./Backend/src
+    build: backend/src
     depends_on:
       - db
     environment:
