@@ -20,7 +20,6 @@ class Entity():
     last_updated_by = Column(String)
 
     def __init__(self, created_by):
-        #TODO: set id
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         self.last_updated_by = created_by
