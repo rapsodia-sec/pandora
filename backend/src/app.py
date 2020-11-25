@@ -4,6 +4,8 @@ from flask_cors import CORS
 from .entities.entity import Base, engine, Session
 from .entities.user import User, UserSchema
 
+from .auth import AuthError, requires_auth
+
 # creating the Flask application
 app = Flask(__name__)
 CORS(app)
@@ -31,6 +33,7 @@ def get_users():
 
 
 @app.route('/users', methods=['POST'])
+@requires_auth
 def add_user():
     new_user = UserSchema().load(request.get_json())
     user = User(**new_user)
@@ -44,6 +47,13 @@ def add_user():
         result = True
     session.close()
     return str(result)
+
+
+@app.errorhandler(AuthError)
+def handle_auth_error(ex):
+    response = jsonify(ex.error)
+    response.status_code = ex.status_code
+    return response
 
 
 if __name__ == '__main__':
